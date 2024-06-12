@@ -14,6 +14,8 @@ const fetchBooks = () => {
         col.classList.add("col");
         const card = document.createElement("div");
         card.classList.add("card");
+        card.classList.add("bg-dark");
+        card.classList.add("text-light");
 
         const img = document.createElement("img");
         img.src = element.img;
