@@ -25,7 +25,7 @@ const fetchBooks = () => {
         cardTitle.classList.add("cardTitle");
         cardTitle.textContent = element.title;
         const cardPrice = document.createElement("p");
-        cardPrice.textContent = element.price;
+        cardPrice.textContent = "prezzo: " + element.price + "€";
 
         /* col.appendChild(card);
         cardsConteiner.appendChild(col); */
