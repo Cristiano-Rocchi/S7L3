@@ -8,7 +8,7 @@ const fetchBooks = () => {
     })
     .then((books) => {
       console.log("books", books);
-      const row = document.getElementById("cardsConteiner");
+      const row = document.getElementById("cardsContainer");
       books.forEach((element) => {
         const col = document.createElement("div");
         col.classList.add("col");
@@ -24,29 +24,48 @@ const fetchBooks = () => {
         cardBody.classList.add("cardBody");
         const button = document.createElement("button");
         button.classList.add("btn");
-        button.classList.add("btn-primary");
+        button.classList.add("btn-outline-danger");
         button.innerText = "delete";
         button.addEventListener("click", (event) => {
-          event.target.parentElement.parentElement.parentElement.remove();
+          /* event.target.parentElement.parentElement.parentElement.remove(); */
+          event.target.closest(".col").remove();
         });
 
         const cardTitle = document.createElement("h3");
         cardTitle.classList.add("cardTitle");
         cardTitle.textContent = element.title;
+        const priceAndButtonContainer = document.createElement("div");
+        priceAndButtonContainer.classList.add(
+          "d-flex",
+          "justify-content-between",
+          "priceAndButtonContainer"
+        );
         const cardPrice = document.createElement("p");
         cardPrice.textContent = "prezzo: " + element.price + "€";
 
         /* col.appendChild(card);
         cardsConteiner.appendChild(col); */
+
         cardBody.appendChild(cardTitle);
-        cardBody.appendChild(cardPrice);
-        cardBody.appendChild(button);
+        cardBody.appendChild(priceAndButtonContainer);
+        priceAndButtonContainer.appendChild(cardPrice);
+        priceAndButtonContainer.appendChild(button);
         card.appendChild(img);
         card.appendChild(cardBody);
 
         col.appendChild(card);
         row.appendChild(col);
       });
+      const main = document.querySelector("main");
+      const footer = document.createElement("footer");
+      footer.classList.add("mt-4", "text-center", "text-secondary");
+
+      const pFooter = document.createElement("p");
+
+      pFooter.innerHTML = "copyright kun (131213121312)";
+      footer.appendChild(pFooter);
+
+      main.insertAdjacentElement("afterend", footer);
     })
     .catch((err) => console.log(err));
 };

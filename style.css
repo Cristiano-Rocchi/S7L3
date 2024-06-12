@@ -26,3 +26,6 @@ h3 {
 .cardPrice {
   align-items: end;
 }
+body {
+  background-color: black;
+}
