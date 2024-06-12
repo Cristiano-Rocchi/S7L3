@@ -22,6 +22,13 @@ const fetchBooks = () => {
 
         const cardBody = document.createElement("div");
         cardBody.classList.add("cardBody");
+        const button = document.createElement("button");
+        button.classList.add("btn");
+        button.classList.add("btn-primary");
+        button.innerText = "delete";
+        button.addEventListener("click", (event) => {
+          event.target.parentElement.parentElement.parentElement.remove();
+        });
 
         const cardTitle = document.createElement("h3");
         cardTitle.classList.add("cardTitle");
@@ -33,6 +40,7 @@ const fetchBooks = () => {
         cardsConteiner.appendChild(col); */
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardPrice);
+        cardBody.appendChild(button);
         card.appendChild(img);
         card.appendChild(cardBody);
 
